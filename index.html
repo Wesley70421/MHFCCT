@@ -1,0 +1,231 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My Time in Malaysia</title>
+    <style>
+        /* 1. Global Styles: Setting the gradient background */
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%); /* Blue-Green Gradient */
+            background-attachment: fixed; /* Fixed background for a premium feel */
+            min-height: 100vh;
+        }
+
+        /* 2. Main Title Styles */
+        .main-title {
+            text-align: center;
+            color: white;
+            font-size: 2.8rem;
+            padding: 50px 20px;
+            margin: 0;
+            text-shadow: 0 4px 10px rgba(0,0,0,0.15);
+        }
+
+        /* 3. Grid Container: Managing the 3x3 layout */
+        .grid-container {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr); /* 3 columns on desktop */
+            gap: 25px; /* Spacing between cards */
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px 50px 20px;
+        }
+
+        /* 4. Responsive Layout: Automatically adjusting columns for different screens */
+        @media (max-width: 1100px) {
+            .grid-container { grid-template-columns: repeat(2, 1fr); } /* 2 columns for tablets */
+        }
+        @media (max-width: 700px) {
+            .grid-container { grid-template-columns: 1fr; } /* 1 column for mobile */
+            .main-title { font-size: 2rem; }
+        }
+
+        /* 5. White Card Styles */
+        .card {
+            background: #ffffff;
+            border-radius: 25px; /* Rounded corners */
+            padding: 25px;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+            transition: transform 0.3s ease;
+        }
+
+        .card:hover {
+            transform: translateY(-10px); /* Lift effect on hover */
+        }
+
+        /* 6. Card Heading (Green) */
+        .card-header {
+            color: #3a9a7c;
+            font-weight: bold;
+            font-size: 1.25rem;
+            text-align: center;
+            margin-bottom: 20px;
+            min-height: 50px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        /* 7. Iframe Placeholder Styles */
+        .iframe-placeholder {
+            width: 100%;
+            height: 220px;
+            background-color: #f8f9fa;
+            border-radius: 15px;
+            border: 2px dashed #d1d9e0; /* Dashed border to indicate placement */
+            margin-bottom: 20px;
+        }
+
+        /* 8. Sub-section Heading Styles (Blue border) */
+        .sub-section {
+            margin-bottom: 15px;
+        }
+
+        .sub-section h3 {
+            color: #1a73e8;
+            font-size: 1.05rem;
+            margin: 0 0 8px 0;
+            padding-left: 10px;
+            border-left: 4px solid #1a73e8; /* Blue side border */
+        }
+
+        .sub-section p {
+            font-size: 0.9rem;
+            color: #666;
+            margin: 0;
+            line-height: 1.5;
+            padding-left: 14px;
+        }
+    </style>
+</head>
+<body>
+
+    <h1 class="main-title">My Time in Malaysia</h1>
+
+    <div class="grid-container">
+        
+        <div class="card">
+            <div class="card-header">Roti Tissu - Absolute Value Function (1)</div>
+            <iframe class="iframe-placeholder" src="about:blank"></iframe>
+            <div class="sub-section">
+                <h3>Exploring Ideas</h3>
+                <p>Enter your introductory text regarding the Roti Tissu mathematical model here. You can customize this content as needed.</p>
+            </div>
+            <div class="sub-section">
+                <h3>Making Connections</h3>
+                <p>Provide an explanation of how this function connects to real-world examples or observations.</p>
+            </div>
+        </div>
+
+        <div class="card">
+            <div class="card-header">Roti Tissu - Absolute Value Function (2)</div>
+            <iframe class="iframe-placeholder" src="about:blank"></iframe>
+            <div class="sub-section">
+                <h3>Exploring Ideas</h3>
+                <p>Please enter your text content here. Keep it concise and professional for the best presentation.</p>
+            </div>
+            <div class="sub-section">
+                <h3>Making Connections</h3>
+                <p>Describe the mathematical patterns or real-life insights you discovered in this specific section.</p>
+            </div>
+        </div>
+
+        <div class="card">
+            <div class="card-header">Roti Tissu - Absolute Value Function (3)</div>
+            <iframe class="iframe-placeholder" src="about:blank"></iframe>
+            <div class="sub-section">
+                <h3>Exploring Ideas</h3>
+                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore.</p>
+            </div>
+            <div class="sub-section">
+                <h3>Making Connections</h3>
+                <p>Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.</p>
+            </div>
+        </div>
+
+        <div class="card">
+            <div class="card-header">Roti Tissu - Absolute Value Function (4)</div>
+            <iframe class="iframe-placeholder" src="about:blank"></iframe>
+            <div class="sub-section">
+                <h3>Exploring Ideas</h3>
+                <p>Content placeholder. You can click here to start typing and modify the description of your model.</p>
+            </div>
+            <div class="sub-section">
+                <h3>Making Connections</h3>
+                <p>Each section can be used to showcase different parameter changes or unique mathematical perspectives.</p>
+            </div>
+        </div>
+
+        <div class="card">
+            <div class="card-header">Roti Tissu - Absolute Value Function (5)</div>
+            <iframe class="iframe-placeholder" src="about:blank"></iframe>
+            <div class="sub-section">
+                <h3>Exploring Ideas</h3>
+                <p>This is the content description for the fifth model in your series of mathematical explorations.</p>
+            </div>
+            <div class="sub-section">
+                <h3>Making Connections</h3>
+                <p>The 3x3 layout ensures your webpage looks like a professional and organized dashboard.</p>
+            </div>
+        </div>
+
+        <div class="card">
+            <div class="card-header">Roti Tissu - Absolute Value Function (6)</div>
+            <iframe class="iframe-placeholder" src="about:blank"></iframe>
+            <div class="sub-section">
+                <h3>Exploring Ideas</h3>
+                <p>Continue documenting your mathematical findings and the logic behind your function modeling.</p>
+            </div>
+            <div class="sub-section">
+                <h3>Making Connections</h3>
+                <p>Link different concepts together to form a comprehensive report of your project.</p>
+            </div>
+        </div>
+
+        <div class="card">
+            <div class="card-header">Roti Tissu - Absolute Value Function (7)</div>
+            <iframe class="iframe-placeholder" src="about:blank"></iframe>
+            <div class="sub-section">
+                <h3>Exploring Ideas</h3>
+                <p>Detailed introductory text for the seventh model. Use this to highlight specific variables.</p>
+            </div>
+            <div class="sub-section">
+                <h3>Making Connections</h3>
+                <p>Compare this model to previous ones and identify similarities or differences in the data.</p>
+            </div>
+        </div>
+
+        <div class="card">
+            <div class="card-header">Roti Tissu - Absolute Value Function (8)</div>
+            <iframe class="iframe-placeholder" src="about:blank"></iframe>
+            <div class="sub-section">
+                <h3>Exploring Ideas</h3>
+                <p>Explanatory text for the eighth model. Focus on the geometry and structure of the subject.</p>
+            </div>
+            <div class="sub-section">
+                <h3>Making Connections</h3>
+                <p>Describe how mathematics is applied to modeling Malaysian cuisine and cultural elements.</p>
+            </div>
+        </div>
+
+        <div class="card">
+            <div class="card-header">Roti Tissu - Absolute Value Function (9)</div>
+            <iframe class="iframe-placeholder" src="about:blank"></iframe>
+            <div class="sub-section">
+                <h3>Exploring Ideas</h3>
+                <p>The final model description. Use this space to summarize the final iteration of your project.</p>
+            </div>
+            <div class="sub-section">
+                <h3>Making Connections</h3>
+                <p>Concluding remarks regarding your overall findings and the success of the project.</p>
+            </div>
+        </div>
+
+    </div>
+
+</body>
+</html>
