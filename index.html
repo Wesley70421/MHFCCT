@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>My Time in Malaysia - Functions in the Real World</title>
+    <title>My Time in Malaysia</title>
     
     <script>
         window.MathJax = {
@@ -13,83 +13,70 @@
     <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml.js"></script>
 
     <style>
-        /* 全局样式：使用清爽、好看的现代字体 */
+        /* 1. 全局样式：使用清爽、高端的现代字体 */
         body {
             margin: 0;
             padding: 0;
             font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
-            background: linear-gradient(135deg, #1e293b 0%, #0f172a 100%); 
+            background: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%); /* 蓝绿渐变背景 */
             background-attachment: fixed;
             min-height: 100vh;
-            color: #f8fafc;
         }
 
+        /* 主标题样式 */
         .main-title {
             text-align: center;
             color: white;
-            font-size: 2.5rem;
+            font-size: 2.6rem;
             font-weight: 700;
-            padding: 40px 20px 10px 20px;
+            padding: 50px 20px 20px 20px;
             margin: 0;
-        }
-        .main-title span { color: #38bdf8; }
-        
-        .sub-title {
-            text-align: center;
-            color: #94a3b8;
-            font-size: 1rem;
-            margin: 0 0 40px 0;
+            text-shadow: 0 4px 10px rgba(0,0,0,0.15);
         }
 
-        /* 网页整体布局 */
+        /* 2. 网页整体布局容器：单列纵向排列，每行一张大卡片 */
         .container {
             max-width: 1100px;
             margin: 0 auto;
             padding: 0 20px 60px 20px;
             display: flex;
             flex-direction: column;
-            gap: 40px;
+            gap: 35px; /* 卡片之间的间距 */
         }
 
-        /* 卡片布局：左右双栏并排 */
+        /* 3. 核心双栏卡片样式：全部统一为左右并排布局 */
         .card {
-            background: #1e293b;
-            border-radius: 16px; 
+            background: #ffffff;
+            border-radius: 20px;
             padding: 30px;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.3);
-            border: 1px solid #334155;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            color: #333333;
             display: flex;
-            flex-direction: row; 
+            flex-direction: row; /* 左右分栏 */
             gap: 30px;
         }
 
-        /* 响应式断点 */
+        .card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 35px rgba(0,0,0,0.15);
+        }
+
+        /* 响应式断点：在小屏幕或手机上自动变成上下堆叠，防止挤压 */
         @media (max-width: 850px) {
             .card { flex-direction: column; }
             .left-column, .right-column { width: 100% !important; }
         }
 
-        /* 左栏：Desmos 图 */
+        /* 左侧分栏：放 Desmos 图或虚线框 */
         .left-column {
             width: 45%;
             display: flex;
             flex-direction: column;
-        }
-        .iframe-container {
-            width: 100%;
-            height: 350px;
-            background-color: #0f172a;
-            border-radius: 12px;
-            overflow: hidden;
-            border: 1px solid #475569;
-        }
-        .iframe-container iframe {
-            width: 100%;
-            height: 100%;
-            border: none;
+            justify-content: center;
         }
 
-        /* 右栏：文字内容 */
+        /* 右侧分栏：放文字描述 */
         .right-column {
             width: 55%;
             display: flex;
@@ -97,40 +84,65 @@
             justify-content: center;
         }
 
-        .card-header-link {
+        /* 4. 左侧容器样式（Desmos 或 占位虚线框） */
+        .iframe-container {
+            width: 100%;
+            height: 320px;
+            background-color: #f8f9fa;
+            border-radius: 12px;
+            overflow: hidden;
+            border: 1px solid #d1d9e0;
+        }
+        .iframe-container iframe {
+            width: 100%;
+            height: 100%;
+            border: none;
+        }
+
+        .iframe-placeholder {
+            border: 2px dashed #b4c2d0; /* 后面8个卡片的虚线占位框 */
+        }
+
+        /* 5. 右侧文字排版样式 */
+        .card-title-link {
             text-decoration: none;
-            color: #38bdf8;
+            color: #1a73e8;
             font-weight: bold;
-            font-size: 1.35rem;
+            font-size: 1.4rem;
             margin-bottom: 15px;
             display: block;
         }
-        .card-header-link:hover { color: #7dd3fc; }
+        .card-title-link:hover { color: #1557b0; }
 
-        /* 数学公式独立展示框 */
+        .card-title-placeholder {
+            color: #3a9a7c; /* 还原之前默认的绿色标题颜色 */
+        }
+
+        /* 第一个卡片的独立公式显示框 */
         .math-block {
-            background: #020617;
+            background: #f8f9fa;
             padding: 12px 15px;
-            border-radius: 8px;
-            border-left: 4px solid #38bdf8;
-            margin-bottom: 20px;
+            border-radius: 10px;
+            border-left: 4px solid #1a73e8;
+            margin-bottom: 18px;
             font-size: 1.05rem;
             line-height: 1.6;
         }
 
-        /* 描述区块 */
+        /* 描述区块通用样式（蓝色左边框） */
         .sub-section {
             margin-bottom: 15px;
         }
         .sub-section h3 {
-            color: #f1f5f9;
+            color: #1a73e8;
             font-size: 1.05rem;
             margin: 0 0 6px 0;
-            font-weight: 600;
+            padding-left: 10px;
+            border-left: 4px solid #1a73e8;
         }
         .sub-section p {
             font-size: 0.95rem;
-            color: #cbd5e1;
+            color: #555555;
             margin: 0;
             line-height: 1.5;
         }
@@ -138,8 +150,7 @@
 </head>
 <body>
 
-    <h1 class="main-title">Functions of My <span>Time in Malaysia</span></h1>
-    <p class="sub-title">MHF4U Culminating Capstone Task — Mathematical Modeling Dashboard</p>
+    <h1 class="main-title">My Time in Malaysia</h1>
 
     <div class="container">
         
@@ -150,7 +161,7 @@
                 </div>
             </div>
             <div class="right-column">
-                <a class="card-header-link" href="https://www.desmos.com/calculator/i5x7ywlvw4" target="_blank">
+                <a class="card-title-link" href="https://www.desmos.com/calculator/i5x7ywlvw4" target="_blank">
                     1. Twin Towers — Absolute Value Function
                 </a>
                 <div class="math-block">
@@ -171,208 +182,136 @@
 
         <div class="card">
             <div class="left-column">
-                <div class="iframe-container">
-                    <iframe src="https://www.desmos.com/calculator?embed" allowfullscreen></iframe>
-                </div>
+                <div class="iframe-container iframe-placeholder"></div>
             </div>
             <div class="right-column">
-                <a class="card-header-link" href="https://www.desmos.com/calculator" target="_blank">
-                    2. Cafe Relaxing — Quadratic Function
-                </a>
-                <div class="math-block">
-                    Equation: $y = 0.4x^2 + 0.3$<br>
-                    Domain: $\{x \mid -0.4 \le x \le 0.4, x \in \mathbb{R}\}$<br>
-                    Range: $\{y \mid 0.3 \le y \le 0.8, y \in \mathbb{R}\}$
+                <span class="card-title-link card-title-placeholder">2. Roti Tissu — Absolute Value Function (2)</span>
+                <div class="sub-section">
+                    <h3>Exploring Ideas</h3>
+                    <p>Please enter your text content here. Keep it concise and professional for the best presentation.</p>
                 </div>
                 <div class="sub-section">
-                    <h3>Transformations</h3>
-                    <p>The original graph $y=x^2$ is vertically compressed by 0.4 to make the U-shape wider. After that, the graph moves up by 0.3 units to look like the height of the coffee table.</p>
-                </div>
-                <div class="sub-section">
-                    <h3>Domain & Range</h3>
-                    <p>The domain means the horizontal width of my arms when resting. The range means the height of my resting arms as a function of the horizontal distance from my right foot.</p>
+                    <h3>Making Connections</h3>
+                    <p>Describe the mathematical patterns or real-life insights you discovered in this specific section.</p>
                 </div>
             </div>
         </div>
 
         <div class="card">
             <div class="left-column">
-                <div class="iframe-container">
-                    <iframe src="https://www.desmos.com/calculator?embed" allowfullscreen></iframe>
-                </div>
+                <div class="iframe-container iframe-placeholder"></div>
             </div>
             <div class="right-column">
-                <a class="card-header-link" href="https://www.desmos.com/calculator" target="_blank">
-                    3. Classroom Entrance — Reciprocal Function
-                </a>
-                <div class="math-block">
-                    Equation: $y = \frac{1.5}{x - 1} + 2$<br>
-                    Domain: $\{x \mid 1 < x \le 2.5, x \in \mathbb{R}\}$<br>
-                    Range: $\{y \mid 2 < y \le 4, y \in \mathbb{R}\}$
+                <span class="card-title-link card-title-placeholder">3. Roti Tissu — Absolute Value Function (3)</span>
+                <div class="sub-section">
+                    <h3>Exploring Ideas</h3>
+                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore.</p>
                 </div>
                 <div class="sub-section">
-                    <h3>Transformations</h3>
-                    <p>The parent function $y=\frac{1}{x}$ has a vertical stretch by 1.5. Then, the graph shifts to the right by 1 unit and moves up by 2 units to match the corner of the door frame.</p>
-                </div>
-                <div class="sub-section">
-                    <h3>Domain & Range</h3>
-                    <p>The domain cannot include $x=1$ because of the asymptote line. The range shows the curve height of the classroom doorway frame as a function of the horizontal distance from my right foot.</p>
+                    <h3>Making Connections</h3>
+                    <p>Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.</p>
                 </div>
             </div>
         </div>
 
         <div class="card">
             <div class="left-column">
-                <div class="iframe-container">
-                    <iframe src="https://www.desmos.com/calculator?embed" allowfullscreen></iframe>
-                </div>
+                <div class="iframe-container iframe-placeholder"></div>
             </div>
             <div class="right-column">
-                <a class="card-header-link" href="https://www.desmos.com/calculator" target="_blank">
-                    4. Giordano Facade — Reciprocal Squared Function
-                </a>
-                <div class="math-block">
-                    Equation: $y = -\frac{2}{x^2} + 5$<br>
-                    Domain: $\{x \mid -3 \le x \le 3, x \neq 0, x \in \mathbb{R}\}$<br>
-                    Range: $\{y \mid 0 \le y \le 4.8, y \in \mathbb{R}\}$
+                <span class="card-title-link card-title-placeholder">4. Roti Tissu — Absolute Value Function (4)</span>
+                <div class="sub-section">
+                    <h3>Exploring Ideas</h3>
+                    <p>Content placeholder. You can click here to start typing and modify the description of your model.</p>
                 </div>
                 <div class="sub-section">
-                    <h3>Transformations</h3>
-                    <p>The graph $y=\frac{1}{x^2}$ is reflected vertically so it opens down. Next, it has a vertical stretch by 2 and shifts up by 5 units to fit the layout of the building pillars.</p>
-                </div>
-                <div class="sub-section">
-                    <h3>Domain & Range</h3>
-                    <p>The domain cannot have $x=0$ because it is an asymptote. The range means the actual height of the glass window facade as a function of the horizontal distance from my right foot.</p>
+                    <h3>Making Connections</h3>
+                    <p>Each section can be used to showcase different parameter changes or unique mathematical perspectives.</p>
                 </div>
             </div>
         </div>
 
         <div class="card">
             <div class="left-column">
-                <div class="iframe-container">
-                    <iframe src="https://www.desmos.com/calculator?embed" allowfullscreen></iframe>
-                </div>
+                <div class="iframe-container iframe-placeholder"></div>
             </div>
             <div class="right-column">
-                <a class="card-header-link" href="https://www.desmos.com/calculator" target="_blank">
-                    5. Friends Group Selfie — Cubic Function
-                </a>
-                <div class="math-block">
-                    Equation: $y = 0.2(x - 1)^3 + 1.5$<br>
-                    Domain: $\{x \mid -1 \le x \le 3, x \in \mathbb{R}\}$<br>
-                    Range: $\{y \mid 1.2 \le y \le 1.8, y \in \mathbb{R}\}$
+                <span class="card-title-link card-title-placeholder">5. Roti Tissu — Absolute Value Function (5)</span>
+                <div class="sub-section">
+                    <h3>Exploring Ideas</h3>
+                    <p>This is the content description for the fifth model in your series of mathematical explorations.</p>
                 </div>
                 <div class="sub-section">
-                    <h3>Transformations</h3>
-                    <p>The function $y=x^3$ is vertically compressed by 0.2 to become flatter. After that, it shifts right by 1 unit and moves up by 1.5 units to trace the line of our shoulders.</p>
-                </div>
-                <div class="sub-section">
-                    <h3>Domain & Range</h3>
-                    <p>The domain shows the total width of my friends standing next to each other. The range shows our shoulder line heights as a function of the horizontal distance from my right foot.</p>
+                    <h3>Making Connections</h3>
+                    <p>The layout ensures your webpage looks like a professional and organized academic dashboard.</p>
                 </div>
             </div>
         </div>
 
         <div class="card">
             <div class="left-column">
-                <div class="iframe-container">
-                    <iframe src="https://www.desmos.com/calculator?embed" allowfullscreen></iframe>
-                </div>
+                <div class="iframe-container iframe-placeholder"></div>
             </div>
             <div class="right-column">
-                <a class="card-header-link" href="https://www.desmos.com/calculator" target="_blank">
-                    6. Campus Corridor — Tangent Function
-                </a>
-                <div class="math-block">
-                    Equation: $y = 0.5\tan(x) + 1.5$<br>
-                    Domain: $\{x \mid -1.5 < x < 1.5, x \in \mathbb{R}\}$<br>
-                    Range: $\{y \mid 0 \le y \le 3, y \in \mathbb{R}\}$
+                <span class="card-title-link card-title-placeholder">6. Roti Tissu — Absolute Value Function (6)</span>
+                <div class="sub-section">
+                    <h3>Exploring Ideas</h3>
+                    <p>Continue documenting your mathematical findings and the logic behind your function modeling.</p>
                 </div>
                 <div class="sub-section">
-                    <h3>Transformations</h3>
-                    <p>The basic tangent graph $y=\tan(x)$ is vertically compressed by 0.5 to make the curve less steep. Then, it moves up by 1.5 units to align with our normal eye level.</p>
-                </div>
-                <div class="sub-section">
-                    <h3>Domain & Range</h3>
-                    <p>The domain is limited between the two sides of the hallway wall. The range shows the height of the hallway lines as a function of the horizontal distance from my right foot.</p>
+                    <h3>Making Connections</h3>
+                    <p>Link different concepts together to form a comprehensive report of your project.</p>
                 </div>
             </div>
         </div>
 
         <div class="card">
             <div class="left-column">
-                <div class="iframe-container">
-                    <iframe src="https://www.desmos.com/calculator?embed" allowfullscreen></iframe>
-                </div>
+                <div class="iframe-container iframe-placeholder"></div>
             </div>
             <div class="right-column">
-                <a class="card-header-link" href="https://www.desmos.com/calculator" target="_blank">
-                    7. Sunway Lake — Sinusoidal Function
-                </a>
-                <div class="math-block">
-                    Equation: $y = 0.4\sin(\pi x) + 1.6$<br>
-                    Domain: $\{x \mid 0 \le x \le 2, x \in \mathbb{R}\}$<br>
-                    Range: $\{y \mid 1.2 \le y \le 2.0, y \in \mathbb{R}\}$
+                <span class="card-title-link card-title-placeholder">7. Roti Tissu — Absolute Value Function (7)</span>
+                <div class="sub-section">
+                    <h3>Exploring Ideas</h3>
+                    <p>Detailed introductory text for the seventh model. Use this to highlight specific variables.</p>
                 </div>
                 <div class="sub-section">
-                    <h3>Transformations</h3>
-                    <p>The wave graph $y=\sin(x)$ is compressed horizontally by $\frac{1}{\pi}$ to make the waves closer. Then, it is compressed vertically to 0.4 and shifts up by 1.6 units.</p>
-                </div>
-                <div class="sub-section">
-                    <h3>Domain & Range</h3>
-                    <p>The domain covers one full wave of how we stand and sit. The range shows the top height of our heads as a function of the horizontal distance from my right foot.</p>
+                    <h3>Making Connections</h3>
+                    <p>Compare this model to previous ones and identify similarities or differences in the data.</p>
                 </div>
             </div>
         </div>
 
         <div class="card">
             <div class="left-column">
-                <div class="iframe-container">
-                    <iframe src="https://www.desmos.com/calculator?embed" allowfullscreen></iframe>
-                </div>
+                <div class="iframe-container iframe-placeholder"></div>
             </div>
             <div class="right-column">
-                <a class="card-header-link" href="https://www.desmos.com/calculator" target="_blank">
-                    8. Perspective Ceiling — Exponential Function
-                </a>
-                <div class="math-block">
-                    Equation: $y = 0.5(2^x) + 1$<br>
-                    Domain: $\{x \mid 0 \le x \le 4, x \in \mathbb{R}\}$<br>
-                    Range: $\{y \mid 1.5 \le y \le 9, y \in \mathbb{R}\}$
+                <span class="card-title-link card-title-placeholder">8. Roti Tissu — Absolute Value Function (8)</span>
+                <div class="sub-section">
+                    <h3>Exploring Ideas</h3>
+                    <p>Explanatory text for the eighth model. Focus on the geometry and structure of the subject.</p>
                 </div>
                 <div class="sub-section">
-                    <h3>Transformations</h3>
-                    <p>The exponential function $y=2^x$ is compressed vertically by 0.5 to match the slow slope of the roof. Then, the whole graph moves up by 1 unit.</p>
-                </div>
-                <div class="sub-section">
-                    <h3>Domain & Range</h3>
-                    <p>The domain shows the horizontal distance from the back to the front of the ceiling. The range shows the ceiling height as a function of the horizontal distance from my right foot.</p>
+                    <h3>Making Connections</h3>
+                    <p>Describe how mathematics is applied to modeling Malaysian cuisine and cultural elements.</p>
                 </div>
             </div>
         </div>
 
         <div class="card">
             <div class="left-column">
-                <div class="iframe-container">
-                    <iframe src="https://www.desmos.com/calculator?embed" allowfullscreen></iframe>
-                </div>
+                <div class="iframe-container iframe-placeholder"></div>
             </div>
             <div class="right-column">
-                <a class="card-header-link" href="https://www.desmos.com/calculator" target="_blank">
-                    9. Environmental Post — Logarithmic Function
-                </a>
-                <div class="math-block">
-                    Equation: $y = 0.8\log_{10}(x + 1) + 1$<br>
-                    Domain: $\{x \mid 0 \le x \le 0.8, x \in \mathbb{R}\}$<br>
-                    Range: $\{y \mid 1 \le y \le 1.2, y \in \mathbb{R}\}$
+                <span class="card-title-link card-title-placeholder">9. Roti Tissu — Absolute Value Function (9)</span>
+                <div class="sub-section">
+                    <h3>Exploring Ideas</h3>
+                    <p>The final model description. Use this space to summarize the final iteration of your project.</p>
                 </div>
                 <div class="sub-section">
-                    <h3>Transformations</h3>
-                    <p>The basic log function $y=\log_{10}(x)$ shifts left by 1 unit so it does not get an error at $x=0$. Then, it is vertically compressed by 0.8 and moves up by 1 unit.</p>
-                </div>
-                <div class="sub-section">
-                    <h3>Domain & Range</h3>
-                    <p>The domain starts at 0 to show where my body is standing. The range shows the height of my moving arm as a function of the horizontal distance from my right foot.</p>
+                    <h3>Making Connections</h3>
+                    <p>Concluding remarks regarding your overall findings and the success of the project.</p>
                 </div>
             </div>
         </div>
